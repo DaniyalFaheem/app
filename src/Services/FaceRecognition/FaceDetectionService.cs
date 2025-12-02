@@ -11,7 +11,7 @@ namespace FaceRecognitionAttendance.Services.FaceRecognition
     /// </summary>
     public class FaceDetectionService : IFaceDetectionService
     {
-        private Net?  _net;
+        private Net? _net;
         private readonly float _confidenceThreshold = 0.7f;
 
         public bool IsModelLoaded => _net != null;

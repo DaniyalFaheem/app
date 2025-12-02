@@ -18,7 +18,7 @@ namespace FaceRecognitionAttendance.Services.FaceRecognition
 
         public FaceRecognitionService(IUserRepository userRepository)
         {
-            _userRepository = userRepository ??  throw new ArgumentNullException(nameof(userRepository));
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
 
         public byte[] GenerateEncoding(Mat faceImage)

@@ -26,7 +26,7 @@ namespace FaceRecognitionAttendance.Models
 
         [MaxLength(100)]
         [EmailAddress]
-        public string?  Email { get; set; }
+        public string? Email { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -38,13 +38,13 @@ namespace FaceRecognitionAttendance.Models
         /// <summary>
         /// Faculty type (only applicable if UserType is Faculty)
         /// </summary>
-        public FacultyType?  FacultyType { get; set; }
+        public FacultyType? FacultyType { get; set; }
 
         /// <summary>
         /// Monthly salary for MonthlyRegular faculty type
         /// </summary>
         [Column(TypeName = "decimal(18,2)")]
-        public decimal?  MonthlySalary { get; set; }
+        public decimal? MonthlySalary { get; set; }
 
         /// <summary>
         /// Fixed salary for VisitingFixed faculty type (30-day contract)
@@ -71,7 +71,7 @@ namespace FaceRecognitionAttendance.Models
         /// Path to user's profile photo
         /// </summary>
         [MaxLength(500)]
-        public string?  PhotoPath { get; set; }
+        public string? PhotoPath { get; set; }
 
         /// <summary>
         /// Whether the user is active in the system

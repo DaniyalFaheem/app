@@ -29,8 +29,8 @@ namespace FaceRecognitionAttendance.ViewModels
             IAdminUserRepository adminUserRepository,
             IAuthenticationService authService)
         {
-            _userRepository = userRepository ??  throw new ArgumentNullException(nameof(userRepository));
-            _adminUserRepository = adminUserRepository ??  throw new ArgumentNullException(nameof(adminUserRepository));
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            _adminUserRepository = adminUserRepository ?? throw new ArgumentNullException(nameof(adminUserRepository));
             _authService = authService ?? throw new ArgumentNullException(nameof(authService));
             
             _originalUser = user ?? throw new ArgumentNullException(nameof(user));
@@ -167,7 +167,7 @@ namespace FaceRecognitionAttendance.ViewModels
         {
             IsFaculty = User. UserType == UserType.Faculty;
             
-            if (IsFaculty && User.FacultyType. HasValue)
+            if (IsFaculty && User.FacultyType.HasValue)
             {
                 IsMonthlyRegular = User.FacultyType.Value == FacultyType.MonthlyRegular;
                 IsVisitingFixed = User.FacultyType. Value == FacultyType. VisitingFixed;
@@ -351,7 +351,7 @@ namespace FaceRecognitionAttendance.ViewModels
                 changes.Add($"Phone: '{_originalUser.Phone}' → '{User. Phone}'");
 
             if (_originalUser.Email != User.Email)
-                changes.Add($"Email: '{_originalUser.Email ??  "None"}' → '{User.Email ?? "None"}'");
+                changes.Add($"Email: '{_originalUser.Email ?? "None"}' → '{User.Email ?? "None"}'");
 
             if (_originalUser.Department != User.Department)
                 changes.Add($"Department: '{_originalUser.Department}' → '{User.Department}'");
@@ -380,7 +380,7 @@ namespace FaceRecognitionAttendance.ViewModels
         private void Cancel()
         {
             var result = MessageBox.Show(
-                "Are you sure you want to cancel?  Any unsaved changes will be lost.",
+                "Are you sure you want to cancel? Any unsaved changes will be lost.",
                 "Confirm Cancel",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);

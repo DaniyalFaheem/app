@@ -15,7 +15,7 @@ namespace FaceRecognitionAttendance.Services.Authentication
 
         public AuthenticationService(IAdminUserRepository adminUserRepository)
         {
-            _adminUserRepository = adminUserRepository ??  throw new ArgumentNullException(nameof(adminUserRepository));
+            _adminUserRepository = adminUserRepository ?? throw new ArgumentNullException(nameof(adminUserRepository));
             _sessionManager = SessionManager.Instance;
         }
 

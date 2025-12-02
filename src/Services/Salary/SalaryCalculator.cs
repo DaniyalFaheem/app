@@ -17,8 +17,8 @@ namespace FaceRecognitionAttendance.Services.Salary
 
         public SalaryCalculator(IUserRepository userRepository, IAttendanceRepository attendanceRepository)
         {
-            _userRepository = userRepository ??  throw new ArgumentNullException(nameof(userRepository));
-            _attendanceRepository = attendanceRepository ??  throw new ArgumentNullException(nameof(attendanceRepository));
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            _attendanceRepository = attendanceRepository ?? throw new ArgumentNullException(nameof(attendanceRepository));
         }
 
         public async Task<SalaryCalculationResult?> CalculateSalaryAsync(User faculty, DateTime startDate, DateTime endDate)
@@ -44,7 +44,7 @@ namespace FaceRecognitionAttendance.Services.Salary
             {
                 case FacultyType.MonthlyRegular:
                     // Type 1: Monthly salary - deductions for absences
-                    baseSalary = faculty.MonthlySalary ??  0;
+                    baseSalary = faculty.MonthlySalary ?? 0;
                     var perDayRate = baseSalary / 30;
                     deductions = perDayRate * absentDays;
                     finalSalary = baseSalary - deductions;

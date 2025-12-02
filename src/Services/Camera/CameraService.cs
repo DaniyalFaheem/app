@@ -10,10 +10,10 @@ namespace FaceRecognitionAttendance.Services.Camera
     /// </summary>
     public class CameraService : ICameraService, IDisposable
     {
-        private VideoCapture?  _capture;
+        private VideoCapture? _capture;
         private Mat? _frame;
-        private CancellationTokenSource?  _cancellationTokenSource;
-        private Task?  _captureTask;
+        private CancellationTokenSource? _cancellationTokenSource;
+        private Task? _captureTask;
         private bool _isRunning;
 
         public bool IsRunning => _isRunning;

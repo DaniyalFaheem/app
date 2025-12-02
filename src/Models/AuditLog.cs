@@ -23,7 +23,7 @@ namespace FaceRecognitionAttendance.Models
         public string Action { get; set; } = string.Empty;
 
         [MaxLength(2000)]
-        public string?  Details { get; set; }
+        public string? Details { get; set; }
 
         [Required]
         public DateTime Timestamp { get; set; } = DateTime.Now;

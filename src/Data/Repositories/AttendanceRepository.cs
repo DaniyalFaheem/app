@@ -97,7 +97,7 @@ namespace FaceRecognitionAttendance.Data.Repositories
                 . ToListAsync();
         }
 
-        public async Task<List<AttendanceRecord>> GetByTypeAsync(UserType userType, DateTime?  date = null)
+        public async Task<List<AttendanceRecord>> GetByTypeAsync(UserType userType, DateTime? date = null)
         {
             var query = _context.AttendanceRecords
                 .Include(a => a.User)

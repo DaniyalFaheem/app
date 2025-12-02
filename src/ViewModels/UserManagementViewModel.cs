@@ -52,7 +52,7 @@ namespace FaceRecognitionAttendance.ViewModels
             set => SetProperty(ref _users, value);
         }
 
-        private User?  _selectedUser;
+        private User? _selectedUser;
         public User? SelectedUser
         {
             get => _selectedUser;
@@ -162,7 +162,7 @@ namespace FaceRecognitionAttendance.ViewModels
 
                 // Apply filter
                 if (FilterUserType == "Students Only")
-                    users = users.Where(u => u.UserType == UserType. Student).ToList();
+                    users = users.Where(u => u.UserType == UserType.Student).ToList();
                 else if (FilterUserType == "Faculty Only")
                     users = users.Where(u => u.UserType == UserType.Faculty).ToList();
 
@@ -172,7 +172,7 @@ namespace FaceRecognitionAttendance.ViewModels
                     Users.Add(user);
                 }
 
-                TotalUsers = Users. Count;
+                TotalUsers = Users.Count;
             }
             catch (Exception ex)
             {
@@ -283,11 +283,11 @@ namespace FaceRecognitionAttendance.ViewModels
                          $"ID: {SelectedUser.Id}\n" +
                          $"Name: {SelectedUser.Name}\n" +
                          $"Phone: {SelectedUser. Phone}\n" +
-                         $"Email: {SelectedUser.Email ??  "N/A"}\n" +
+                         $"Email: {SelectedUser.Email ?? "N/A"}\n" +
                          $"Department: {SelectedUser.Department}\n" +
                          $"Type: {SelectedUser.UserType}\n";
 
-            if (SelectedUser.UserType == UserType.Faculty && SelectedUser.FacultyType. HasValue)
+            if (SelectedUser.UserType == UserType.Faculty && SelectedUser.FacultyType.HasValue)
             {
                 details += $"Faculty Type: {SelectedUser.FacultyType.Value}\n";
                 
@@ -316,7 +316,7 @@ namespace FaceRecognitionAttendance.ViewModels
             MessageBox.Show(details, "User Details", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private async System.Threading.Tasks.Task LogAuditAsync(string action, string?  details = null)
+        private async System.Threading.Tasks.Task LogAuditAsync(string action, string? details = null)
         {
             try
             {

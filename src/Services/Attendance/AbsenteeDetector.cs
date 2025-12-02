@@ -24,7 +24,7 @@ namespace FaceRecognitionAttendance.Services.Attendance
         /// <summary>
         /// Detect absentees for a specific date
         /// </summary>
-        public async Task<List<User>> DetectAbsenteesAsync(DateTime date, string?  department = null, UserType? userType = null)
+        public async Task<List<User>> DetectAbsenteesAsync(DateTime date, string? department = null, UserType? userType = null)
         {
             // Get all registered users
             var allUsers = await _userRepository.GetActiveUsersAsync();

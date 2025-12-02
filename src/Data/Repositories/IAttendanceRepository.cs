@@ -43,7 +43,7 @@ namespace FaceRecognitionAttendance.Data.Repositories
         /// <summary>
         /// Get attendance records by department
         /// </summary>
-        Task<List<AttendanceRecord>> GetByDepartmentAsync(string department, DateTime?  date = null);
+        Task<List<AttendanceRecord>> GetByDepartmentAsync(string department, DateTime? date = null);
 
         /// <summary>
         /// Get attendance records by user type

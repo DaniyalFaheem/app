@@ -18,7 +18,7 @@ namespace FaceRecognitionAttendance.Services.Attendance
 
         public AttendanceService(IAttendanceRepository attendanceRepository, ICsvExportService csvExportService)
         {
-            _attendanceRepository = attendanceRepository ??  throw new ArgumentNullException(nameof(attendanceRepository));
+            _attendanceRepository = attendanceRepository ?? throw new ArgumentNullException(nameof(attendanceRepository));
             _csvExportService = csvExportService ?? throw new ArgumentNullException(nameof(csvExportService));
             _cooldownTracker = new Dictionary<int, DateTime>();
         }

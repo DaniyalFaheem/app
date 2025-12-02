@@ -5,7 +5,7 @@ using FaceRecognitionAttendance.ViewModels;
 namespace FaceRecognitionAttendance.Views
 {
     /// <summary>
-    /// Interaction logic for UserManagementWindow. xaml
+    /// Interaction logic for UserManagementWindow.xaml
     /// </summary>
     public partial class UserManagementWindow : Window
     {

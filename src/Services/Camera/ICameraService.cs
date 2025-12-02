@@ -21,7 +21,7 @@ namespace FaceRecognitionAttendance.Services.Camera
         /// <summary>
         /// Get current frame
         /// </summary>
-        Mat?  GetFrame();
+        Mat? GetFrame();
 
         /// <summary>
         /// Check if camera is running

@@ -11,7 +11,7 @@ namespace FaceRecognitionAttendance.Services.Authentication
         /// <summary>
         /// Current logged-in admin user
         /// </summary>
-        AdminUser?  CurrentUser { get; }
+        AdminUser? CurrentUser { get; }
 
         /// <summary>
         /// Check if user is authenticated

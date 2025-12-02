@@ -8,7 +8,7 @@ namespace FaceRecognitionAttendance.Services.Authentication
     /// </summary>
     public class SessionManager
     {
-        private static SessionManager?  _instance;
+        private static SessionManager? _instance;
         private static readonly object _lock = new object();
 
         private AdminUser? _currentUser;

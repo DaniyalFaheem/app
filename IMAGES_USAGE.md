@@ -30,6 +30,8 @@ This document describes how the image assets are organized and used in the Face 
 
 **How to Use the Send Button Style:**
 
+The `SendButtonStyle` is defined globally in `App.xaml` and is available in all windows without any additional setup.
+
 In any XAML file where you want to use the send button image:
 
 ```xml
@@ -72,7 +74,7 @@ In any XAML file where you want to use the send button image:
 
 If you want to add a "Send WhatsApp Alert" button to a window:
 
-1. Ensure the window has access to the SendButtonStyle (copy from UserManagementWindow.xaml resources if needed)
+1. The SendButtonStyle is globally available from App.xaml (no need to copy it)
 2. Add the button in your layout:
 
 ```xml

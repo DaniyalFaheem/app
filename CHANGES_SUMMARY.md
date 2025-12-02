@@ -17,14 +17,16 @@ This PR organizes the newly uploaded image assets (`send_button.png` and `backgr
 
 ### 3. UI Enhancements
 
+#### App.xaml
+- ✅ Created global `SendButtonStyle` button style using send_button.png
+- ✅ Style includes hover, press, and disabled state effects
+- ✅ Available in all windows without duplication
+
 #### UserManagementWindow.xaml
 - ✅ Added futuristic background image with 15% opacity
-- ✅ Created reusable `SendButtonStyle` button style using send_button.png
-- ✅ Style includes hover, press, and disabled state effects
 
 #### EditUserWindow.xaml
 - ✅ Added futuristic background image with 12% opacity (slightly lower for form readability)
-- ✅ Added `SendButtonStyle` for consistency across windows
 
 ### 4. Documentation
 - ✅ Created `IMAGES_USAGE.md` - Comprehensive guide on using the image assets

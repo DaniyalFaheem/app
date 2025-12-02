@@ -26,8 +26,8 @@ namespace FaceRecognitionAttendance.ViewModels
             IAdminUserRepository adminUserRepository,
             IAuthenticationService authService)
         {
-            _userRepository = userRepository ??  throw new ArgumentNullException(nameof(userRepository));
-            _adminUserRepository = adminUserRepository ??  throw new ArgumentNullException(nameof(adminUserRepository));
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            _adminUserRepository = adminUserRepository ?? throw new ArgumentNullException(nameof(adminUserRepository));
             _authService = authService ?? throw new ArgumentNullException(nameof(authService));
 
             Users = new ObservableCollection<User>();
@@ -138,7 +138,7 @@ namespace FaceRecognitionAttendance.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading users: {ex.Message}", "Error", MessageBoxButton. OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error loading users: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -235,7 +235,7 @@ namespace FaceRecognitionAttendance.ViewModels
                 $"• Face recognition data\n\n" +
                 $"This action cannot be undone! ",
                 "Confirm Delete",
-                MessageBoxButton. YesNo,
+                MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
 
             if (result != MessageBoxResult.Yes) return;

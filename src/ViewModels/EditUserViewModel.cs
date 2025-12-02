@@ -311,7 +311,7 @@ namespace FaceRecognitionAttendance.ViewModels
                 // Log audit trail
                 await LogAuditAsync();
 
-                MessageBox.Show("User information updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage. Information);
+                MessageBox.Show("User information updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 
                 DialogResult = true;
                 CloseWindow();

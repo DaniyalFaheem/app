@@ -24,6 +24,7 @@ A production-ready, standalone desktop application for automated attendance mana
 - ✅ **Role-Based Access** - Secure Admin and User panels
 - ✅ **Modern Material UI** - Live video feed with color-coded detection
 - ✅ **Complete Audit Trail** - Edit user information with full change history
+- ✅ **Futuristic UI Design** - Tech-themed backgrounds with custom button styles
 
 ### ⚡ Technical Highlights
 - **Single Executable** - ~140MB standalone .exe with zero dependencies
@@ -98,6 +99,8 @@ FaceRecognitionAttendance/
 │   ├── Resources/                 # Embedded resources
 │   │   ├── Models/               # AI models (download separately)
 │   │   ├── Images/               # App icons and images
+│   │   │   ├── background.jpg    # ✨ Futuristic UI background
+│   │   │   └── send_button.png   # ✨ Custom send button
 │   │   └── Styles/               # ModernWPF themes
 │   │
 │   ├── App.xaml                   # Application definition
@@ -456,6 +459,16 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+---
+
+## 🎨 UI Customization
+
+The application features a modern, futuristic UI design with custom image assets:
+
+- **Background Image**: Futuristic tech-themed background applied to all windows with subtle opacity
+- **Custom Send Button**: Green "SEND" button for WhatsApp alerts and submissions
+- See [IMAGES_USAGE.md](IMAGES_USAGE.md) for details on using these assets in custom windows
 
 ---
 

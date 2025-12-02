@@ -27,6 +27,13 @@
     </Window.Resources>
 
     <Grid Margin="30">
+        <!-- Background Image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/background.jpg" 
+                       Opacity="0.12" 
+                       Stretch="UniformToFill"/>
+        </Grid.Background>
+        
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <!-- Header -->

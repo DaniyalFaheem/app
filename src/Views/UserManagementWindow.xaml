@@ -15,6 +15,13 @@
     </Window.Resources>
 
     <Grid>
+        <!-- Background Image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/background.jpg" 
+                       Opacity="0.15" 
+                       Stretch="UniformToFill"/>
+        </Grid.Background>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

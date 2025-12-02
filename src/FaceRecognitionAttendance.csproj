@@ -56,7 +56,7 @@
   <ItemGroup>
     <!-- Embed AI models and resources -->
     <EmbeddedResource Include="Resources\Models\**\*" />
-    <EmbeddedResource Include="Resources\Images\**\*" />
+    <Resource Include="Resources\Images\**\*" />
     <EmbeddedResource Include="Resources\Styles\**\*" />
   </ItemGroup>
 </Project>

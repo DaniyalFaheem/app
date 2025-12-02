@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ApplicationIcon>Resources\Images\logo.ico</ApplicationIcon>
+    
+    <!-- Single-file publishing configuration -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    
+    <!-- Assembly information -->
+    <AssemblyName>FaceRecognitionAttendance</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>Daniyal Faheem</Authors>
+    <Company>Your Company</Company>
+    <Product>Face Recognition Attendance Management System</Product>
+    <Description>AI-powered attendance management system with real-time face recognition</Description>
+    <Copyright>Copyright © 2025 Your Company.  All rights reserved.</Copyright>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- OpenCV for face detection and recognition -->
+    <PackageReference Include="OpenCvSharp4" Version="4.8.1.20231024" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.8.1.20231024" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.8.1.20231024" />
+    
+    <!-- Entity Framework Core with SQLite -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Security libraries -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    
+    <!-- CSV export -->
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    
+    <!-- Modern UI theme -->
+    <PackageReference Include="ModernWpfUI" Version="0.9.6" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    
+    <!-- Additional utilities -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <!-- Embed AI models and resources -->
+    <EmbeddedResource Include="Resources\Models\**\*" />
+    <EmbeddedResource Include="Resources\Images\**\*" />
+    <EmbeddedResource Include="Resources\Styles\**\*" />
+  </ItemGroup>
+</Project>

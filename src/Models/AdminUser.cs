@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FaceRecognitionAttendance. Models
+namespace FaceRecognitionAttendance.Models
 {
     /// <summary>
     /// Admin user entity for authentication and authorization

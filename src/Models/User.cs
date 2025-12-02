@@ -22,7 +22,7 @@ namespace FaceRecognitionAttendance.Models
         [Required]
         [MaxLength(20)]
         [Phone]
-        public string Phone { get; set; } = string. Empty;
+        public string Phone { get; set; } = string.Empty;
 
         [MaxLength(100)]
         [EmailAddress]

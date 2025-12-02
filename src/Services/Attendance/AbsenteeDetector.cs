@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FaceRecognitionAttendance.Models;
-using FaceRecognitionAttendance. Data.Repositories;
+using FaceRecognitionAttendance.Data.Repositories;
 
-namespace FaceRecognitionAttendance. Services.Attendance
+namespace FaceRecognitionAttendance.Services.Attendance
 {
     /// <summary>
     /// Absentee detection service

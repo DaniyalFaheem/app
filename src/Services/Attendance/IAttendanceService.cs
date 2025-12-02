@@ -2,7 +2,7 @@ using FaceRecognitionAttendance.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace FaceRecognitionAttendance.Services. Attendance
+namespace FaceRecognitionAttendance.Services.Attendance
 {
     /// <summary>
     /// Attendance service interface

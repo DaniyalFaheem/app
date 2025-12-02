@@ -1,8 +1,8 @@
-using Microsoft. EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using FaceRecognitionAttendance.Models;
 using System;
-using System. Linq;
-using System.Threading. Tasks;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FaceRecognitionAttendance.Data
 {

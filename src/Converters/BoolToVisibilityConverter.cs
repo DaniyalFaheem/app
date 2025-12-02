@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
 using System.Windows;
-using System. Windows.Data;
+using System.Windows.Data;
 
-namespace FaceRecognitionAttendance. Converters
+namespace FaceRecognitionAttendance.Converters
 {
     /// <summary>
     /// Converts boolean to Visibility

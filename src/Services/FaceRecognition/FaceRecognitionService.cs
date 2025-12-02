@@ -1,9 +1,9 @@
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
-using System. Linq;
-using System.Threading. Tasks;
-using FaceRecognitionAttendance. Data. Repositories;
+using System.Linq;
+using System.Threading.Tasks;
+using FaceRecognitionAttendance.Data.Repositories;
 
 namespace FaceRecognitionAttendance.Services.FaceRecognition
 {

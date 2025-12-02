@@ -1,12 +1,12 @@
 using System;
-using System.Collections. Generic;
-using System. Linq;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using FaceRecognitionAttendance.Models;
-using FaceRecognitionAttendance. Data.Repositories;
-using FaceRecognitionAttendance.Services. Authentication;
-using FaceRecognitionAttendance. Helpers;
+using FaceRecognitionAttendance.Data.Repositories;
+using FaceRecognitionAttendance.Services.Authentication;
+using FaceRecognitionAttendance.Helpers;
 
 namespace FaceRecognitionAttendance.ViewModels
 {

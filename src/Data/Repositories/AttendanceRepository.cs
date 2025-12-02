@@ -2,10 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using FaceRecognitionAttendance.Models;
 using System;
 using System.Collections.Generic;
-using System. Linq;
-using System.Threading. Tasks;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FaceRecognitionAttendance.Data. Repositories
+namespace FaceRecognitionAttendance.Data.Repositories
 {
     /// <summary>
     /// Repository implementation for AttendanceRecord entity operations

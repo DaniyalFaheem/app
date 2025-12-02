@@ -2,7 +2,7 @@ using OpenCvSharp;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FaceRecognitionAttendance.Services. FaceRecognition
+namespace FaceRecognitionAttendance.Services.FaceRecognition
 {
     /// <summary>
     /// Face recognition result

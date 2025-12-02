@@ -1,9 +1,9 @@
-using FaceRecognitionAttendance. Models;
+using FaceRecognitionAttendance.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FaceRecognitionAttendance.Services. Salary
+namespace FaceRecognitionAttendance.Services.Salary
 {
     /// <summary>
     /// Salary calculator service interface

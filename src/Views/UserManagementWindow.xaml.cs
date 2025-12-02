@@ -1,6 +1,6 @@
 using System.Windows;
 using System.Windows.Input;
-using FaceRecognitionAttendance. ViewModels;
+using FaceRecognitionAttendance.ViewModels;
 
 namespace FaceRecognitionAttendance.Views
 {

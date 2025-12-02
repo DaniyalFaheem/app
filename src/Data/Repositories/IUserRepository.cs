@@ -2,7 +2,7 @@ using FaceRecognitionAttendance.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FaceRecognitionAttendance.Data. Repositories
+namespace FaceRecognitionAttendance.Data.Repositories
 {
     /// <summary>
     /// Repository interface for User entity operations

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using FaceRecognitionAttendance.Models;
-using FaceRecognitionAttendance.Data. Repositories;
+using FaceRecognitionAttendance.Data.Repositories;
 
 namespace FaceRecognitionAttendance.Services.Authentication
 {

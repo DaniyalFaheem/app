@@ -1,4 +1,4 @@
-using FaceRecognitionAttendance. Models;
+using FaceRecognitionAttendance.Models;
 using System;
 using System.Collections.Generic;
 

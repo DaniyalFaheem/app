@@ -1,4 +1,4 @@
-using FaceRecognitionAttendance. Models;
+using FaceRecognitionAttendance.Models;
 using System.Threading.Tasks;
 
 namespace FaceRecognitionAttendance.Services.Authentication

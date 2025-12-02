@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System. Globalization;
+using System.Globalization;
 using System.IO;
-using System. Linq;
-using System.Threading. Tasks;
+using System.Linq;
+using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
-using FaceRecognitionAttendance. Models;
+using FaceRecognitionAttendance.Models;
 
 namespace FaceRecognitionAttendance.Services.Attendance
 {
@@ -45,7 +45,7 @@ namespace FaceRecognitionAttendance.Services.Attendance
                     HasHeaderRecord = ! fileExists
                 };
 
-                using var stream = File.Open(filePath, FileMode. Append, FileAccess.Write, FileShare.Read);
+                using var stream = File.Open(filePath, FileMode.Append, FileAccess.Write, FileShare.Read);
                 using var writer = new StreamWriter(stream);
                 using var csv = new CsvWriter(writer, config);
 

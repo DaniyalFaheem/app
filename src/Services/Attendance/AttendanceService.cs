@@ -1,5 +1,5 @@
 using System;
-using System. Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FaceRecognitionAttendance.Models;
 using FaceRecognitionAttendance.Data.Repositories;

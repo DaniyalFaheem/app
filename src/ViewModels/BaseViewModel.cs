@@ -1,7 +1,7 @@
-using System. ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace FaceRecognitionAttendance. ViewModels
+namespace FaceRecognitionAttendance.ViewModels
 {
     /// <summary>
     /// Base ViewModel class implementing INotifyPropertyChanged

@@ -1,5 +1,5 @@
 using System;
-using FaceRecognitionAttendance. Models;
+using FaceRecognitionAttendance.Models;
 
 namespace FaceRecognitionAttendance.Services.Authentication
 {

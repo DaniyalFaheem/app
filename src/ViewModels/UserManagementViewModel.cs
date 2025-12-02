@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using FaceRecognitionAttendance. Models;
-using FaceRecognitionAttendance.Data. Repositories;
-using FaceRecognitionAttendance.Services. Authentication;
+using FaceRecognitionAttendance.Models;
+using FaceRecognitionAttendance.Data.Repositories;
+using FaceRecognitionAttendance.Services.Authentication;
 using FaceRecognitionAttendance.Views;
-using FaceRecognitionAttendance. Helpers;
+using FaceRecognitionAttendance.Helpers;
 
 namespace FaceRecognitionAttendance.ViewModels
 {

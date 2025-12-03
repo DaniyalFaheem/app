@@ -10,6 +10,19 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
+                <ResourceDictionary Source="/Resources/Styles/ModernStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
         <!-- Optimized Background - Solid color for better performance -->
         <Grid.Background>
@@ -210,16 +223,4 @@
         </Grid>
     </Grid>
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ui:ThemeResources />
-                <ui:XamlControlsResources />
-                <ResourceDictionary Source="/Resources/Styles/ModernStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            
-            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-        </ResourceDictionary>
-    </Window.Resources>
 </Window>

@@ -1,11 +1,11 @@
 # 🎓 Face Recognition Attendance Management System
 
-[![.NET](https://img.shields.io/badge/.NET-6.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![WPF](https://img.shields.io/badge/WPF-Windows-0078D4?logo=windows)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
-[![OpenCV](https://img.shields.io/badge/OpenCV-4.8-5C3EE8?logo=opencv)](https://opencv.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.10-5C3EE8?logo=opencv)](https://opencv.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A production-ready, standalone desktop application for automated attendance management using real-time face recognition technology. Built with modern WPF and powered by OpenCV AI models.
+A **commercial-grade**, standalone desktop application for automated attendance management using real-time face recognition technology. Built with .NET 8.0, modern WPF, and powered by OpenCV AI models. **100% self-contained single EXE** - works on any Windows PC with **ZERO pre-installation**.
 
 ## 📸 Screenshots
 
@@ -27,21 +27,23 @@ A production-ready, standalone desktop application for automated attendance mana
 - ✅ **Futuristic UI Design** - Tech-themed backgrounds with custom button styles
 
 ### ⚡ Technical Highlights
-- **Single Executable** - ~140MB standalone .exe with zero dependencies
+- **Single Executable** - ~140-180MB standalone .exe with **absolute zero dependencies**
 - **AI-Powered** - Embedded OpenCV DNN models for face detection and recognition
 - **High Performance** - Face detection <30ms, Recognition <2s for 1000 users
 - **Enterprise Security** - SQLite encryption, BCrypt hashing, session management
 - **Zero-Config Deployment** - Works out-of-the-box on clean Windows 10/11 systems
+- **.NET 8.0 Commercial Grade** - Latest LTS with maximum reliability and performance
+- **100% Self-Contained** - No .NET runtime, no Visual C++, no dependencies needed
 
 ## 🎯 Technology Stack
 
 | Component | Technology |
 |-----------|------------|
-| **Language** | C# 10 with . NET 6 |
+| **Language** | C# 12 with .NET 8.0 (LTS) |
 | **Framework** | WPF with ModernWPF theme |
-| **Face Recognition** | OpenCvSharp4 + DNN module |
-| **Database** | SQLite with Entity Framework Core |
-| **Security** | BCrypt. Net for password hashing |
+| **Face Recognition** | OpenCvSharp4 4.10 + DNN module |
+| **Database** | SQLite with Entity Framework Core 8.0 |
+| **Security** | BCrypt.Net for password hashing |
 | **CSV Export** | CsvHelper library |
 | **Camera** | OpenCV VideoCapture |
 
@@ -131,7 +133,7 @@ FaceRecognitionAttendance/
 
 #### Prerequisites
 - **Windows 10/11** (64-bit) - WPF requires Windows
-- **.NET 6 SDK** - [Download here](https://dotnet.microsoft.com/download/dotnet/6.0)
+- **.NET 8.0 SDK** - [Download here](https://dotnet.microsoft.com/download/dotnet/8.0)
 - **Visual Studio 2022** (optional) - For IDE development
 - **Webcam** - Required for face detection
 
@@ -148,13 +150,13 @@ dotnet restore src/FaceRecognitionAttendance.csproj
 # Build in Release mode
 dotnet build src/FaceRecognitionAttendance.csproj -c Release
 
-# Run the application
-dotnet run --project src/FaceRecognitionAttendance.csproj
-
-# Or use the automated publish script
+# Publish as self-contained single EXE (recommended)
 cd build
 .\publish.ps1
-# Output: .\publish\FaceRecognitionAttendance.exe
+# Output: .\publish\FaceRecognitionAttendance.exe (~140-180 MB)
+
+# Or run directly in development mode
+dotnet run --project src/FaceRecognitionAttendance.csproj
 ```
 
 #### Development with Visual Studio
@@ -371,8 +373,8 @@ Default settings (modifiable in `AppSettings.cs`):
 ## 📦 Building from Source
 
 ### Requirements
-- ✅ **.NET 6 SDK** - [Download](https://dotnet.microsoft.com/download/dotnet/6.0)
-- ✅ **Windows 10/11** (64-bit)
+- ✅ **.NET 8.0 SDK** - [Download](https://dotnet.microsoft.com/download/dotnet/8.0)
+- ✅ **Windows 10/11** (64-bit) - Version 1809 or higher
 - ✅ **Visual Studio 2022** (optional, for IDE development)
 
 ### Build Steps
@@ -402,11 +404,13 @@ dotnet publish -c Release -r win-x64 `
 # Output: ../publish/FaceRecognitionAttendance.exe
 ```
 
-### Or Use Automated Script
+### Or Use Automated Script (Recommended)
 ```powershell
 cd build
 .\publish.ps1
 ```
+
+**Important:** See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for comprehensive build and deployment instructions.
 
 ---
 
@@ -433,6 +437,20 @@ Place in: `src/Resources/Models/`
 ---
 
 ## 🔄 Changelog
+
+### Version 2.0.0 (2025-12-03) - .NET 8.0 Commercial Grade Release 🚀
+#### ✨ Major Upgrade
+- ✅ **Upgraded to .NET 8.0 LTS** - Latest long-term support version
+- ✅ **Enhanced Build System** - Improved publish script with optimization flags
+- ✅ **Updated All Dependencies** - Latest stable NuGet packages
+  - OpenCvSharp4: 4.8 → 4.10
+  - Entity Framework Core: 6.0 → 8.0
+  - CsvHelper: 30.0 → 33.0
+- ✅ **Commercial-Grade Reliability** - Production-ready configuration
+- ✅ **100% Self-Contained** - Absolute zero dependencies required
+- ✅ **Maximum Performance** - ReadyToRun, trimming, compression enabled
+- ✅ **Comprehensive Documentation** - Added detailed deployment guide
+- ✅ **Enhanced Security** - Latest security patches and best practices
 
 ### Version 1.0.0 (2025-12-02)
 #### ✨ Initial Release

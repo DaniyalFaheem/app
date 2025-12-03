@@ -149,18 +149,10 @@ namespace FaceRecognitionAttendance.ViewModels
             UpdateVisibility();
             UpdateLastModifiedInfo();
             
-            // Subscribe to property changes for dynamic validation
-            User.PropertyChanged += (s, e) =>
-            {
-                if (e.PropertyName == nameof(User.UserType))
-                {
-                    UpdateVisibility();
-                }
-                else if (e.PropertyName == nameof(User.FacultyType))
-                {
-                    UpdateVisibility();
-                }
-            };
+            // Note: User model doesn't implement INotifyPropertyChanged, 
+            // so dynamic property change subscriptions are not available.
+            // UpdateVisibility() is called explicitly when needed during Save operation.
+            // TODO: Consider implementing INotifyPropertyChanged on User model if dynamic UI updates are needed.
         }
 
         private void UpdateVisibility()

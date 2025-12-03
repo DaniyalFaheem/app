@@ -144,7 +144,7 @@ namespace FaceRecognitionAttendance
                 var logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] INFO: {message}{Environment.NewLine}";
                 File.AppendAllText(_logFilePath, logEntry);
             }
-            catch
+            catch (Exception)
             {
                 // Silently fail if logging fails (don't crash due to logging)
             }
@@ -181,7 +181,7 @@ namespace FaceRecognitionAttendance
 
                 File.AppendAllText(_logFilePath, sb.ToString());
             }
-            catch
+            catch (Exception)
             {
                 // Silently fail if logging fails
             }

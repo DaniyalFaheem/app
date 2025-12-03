@@ -16,7 +16,7 @@ This document details the upgrade from .NET 6.0 to .NET 8.0 for the Face Recogni
 
 | Package | Old Version | New Version | Changes |
 |---------|-------------|-------------|---------|
-| OpenCvSharp4 | 4.8.1.20231024 | 4.10.0.20241025 | Performance improvements, bug fixes |
+| OpenCvSharp4 | 4.8.1.20231024 | 4.10.0.20241107 | Performance improvements, bug fixes |
 | Entity Framework Core | 6.0.25 | 8.0.11 | New LINQ features, better performance |
 | Microsoft.EntityFrameworkCore.Sqlite | 6.0.25 | 8.0.11 | SQLite updates |
 | CsvHelper | 30.0.1 | 33.0.1 | API improvements |

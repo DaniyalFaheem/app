@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Windows;
+using System.Windows.Threading;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FaceRecognitionAttendance.Data;
@@ -16,27 +18,104 @@ namespace FaceRecognitionAttendance
 {
     /// <summary>
     /// Application entry point with dependency injection setup
+    /// Commercial-grade error handling and reliability improvements for .NET 8.0
     /// </summary>
     public partial class App : Application
     {
         private ServiceProvider? _serviceProvider;
+        private static string? _logFilePath;
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+            // Setup global exception handlers for maximum reliability
+            SetupExceptionHandlers();
 
-            // Setup application paths
-            SetupApplicationPaths();
+            try
+            {
+                base.OnStartup(e);
 
-            // Configure services
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-            _serviceProvider = serviceCollection.BuildServiceProvider();
+                // Setup application paths
+                SetupApplicationPaths();
 
-            // Initialize database
-            await InitializeDatabaseAsync();
+                // Configure services
+                var serviceCollection = new ServiceCollection();
+                ConfigureServices(serviceCollection);
+                _serviceProvider = serviceCollection.BuildServiceProvider();
 
-            // Show main window (will be LoginWindow as per StartupUri)
+                // Initialize database
+                await InitializeDatabaseAsync();
+
+                // Log successful startup
+                LogMessage("Application started successfully");
+
+                // Show main window (will be LoginWindow as per StartupUri)
+            }
+            catch (Exception ex)
+            {
+                HandleStartupException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Setup global exception handlers for unhandled exceptions
+        /// Ensures application doesn't crash silently and provides error reporting
+        /// </summary>
+        private void SetupExceptionHandlers()
+        {
+            // Handle UI thread exceptions
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+
+            // Handle non-UI thread exceptions
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            // Handle task exceptions
+            System.Threading.Tasks.TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+        }
+
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            LogException("UI Thread Exception", e.Exception);
+            
+            MessageBox.Show(
+                $"An unexpected error occurred:\n\n{e.Exception.Message}\n\nThe error has been logged. Please contact support if this persists.",
+                "Application Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            e.Handled = true; // Prevent application crash
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e.ExceptionObject is Exception ex)
+            {
+                LogException("Domain Unhandled Exception", ex);
+                
+                MessageBox.Show(
+                    $"A critical error occurred:\n\n{ex.Message}\n\nThe application will now close.",
+                    "Critical Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void TaskScheduler_UnobservedTaskException(object? sender, System.Threading.Tasks.UnobservedTaskExceptionEventArgs e)
+        {
+            LogException("Task Exception", e.Exception);
+            e.SetObserved(); // Prevent process termination
+        }
+
+        private void HandleStartupException(Exception ex)
+        {
+            LogException("Startup Exception", ex);
+            
+            MessageBox.Show(
+                $"Failed to start the application:\n\n{ex.Message}\n\nPlease check the log file for details.",
+                "Startup Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            
+            Shutdown(1);
         }
 
         private void SetupApplicationPaths()
@@ -47,6 +126,65 @@ namespace FaceRecognitionAttendance
             Directory.CreateDirectory(appFolder);
             Directory.CreateDirectory(Path.Combine(appFolder, "FaceImages"));
             Directory.CreateDirectory(Path.Combine(appFolder, "Exports"));
+            Directory.CreateDirectory(Path.Combine(appFolder, "Logs"));
+
+            // Initialize log file path
+            _logFilePath = Path.Combine(appFolder, "Logs", $"app_{DateTime.Now:yyyyMMdd}.log");
+        }
+
+        /// <summary>
+        /// Log informational messages for debugging and monitoring
+        /// </summary>
+        private static void LogMessage(string message)
+        {
+            try
+            {
+                if (_logFilePath == null) return;
+
+                var logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] INFO: {message}{Environment.NewLine}";
+                File.AppendAllText(_logFilePath, logEntry);
+            }
+            catch
+            {
+                // Silently fail if logging fails (don't crash due to logging)
+            }
+        }
+
+        /// <summary>
+        /// Log exceptions with full stack trace for troubleshooting
+        /// </summary>
+        private static void LogException(string context, Exception ex)
+        {
+            try
+            {
+                if (_logFilePath == null)
+                {
+                    var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    var logFolder = Path.Combine(appDataPath, "FaceRecognitionAttendance", "Logs");
+                    Directory.CreateDirectory(logFolder);
+                    _logFilePath = Path.Combine(logFolder, $"app_{DateTime.Now:yyyyMMdd}.log");
+                }
+
+                var sb = new StringBuilder();
+                sb.AppendLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] ERROR: {context}");
+                sb.AppendLine($"Message: {ex.Message}");
+                sb.AppendLine($"Type: {ex.GetType().FullName}");
+                sb.AppendLine($"Stack Trace: {ex.StackTrace}");
+                
+                if (ex.InnerException != null)
+                {
+                    sb.AppendLine($"Inner Exception: {ex.InnerException.Message}");
+                    sb.AppendLine($"Inner Stack Trace: {ex.InnerException.StackTrace}");
+                }
+                
+                sb.AppendLine(new string('-', 80));
+
+                File.AppendAllText(_logFilePath, sb.ToString());
+            }
+            catch
+            {
+                // Silently fail if logging fails
+            }
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -93,8 +231,19 @@ namespace FaceRecognitionAttendance
 
         protected override void OnExit(ExitEventArgs e)
         {
-            _serviceProvider?.Dispose();
-            base.OnExit(e);
+            try
+            {
+                LogMessage("Application shutting down");
+                _serviceProvider?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                LogException("Shutdown Exception", ex);
+            }
+            finally
+            {
+                base.OnExit(e);
+            }
         }
     }
 }

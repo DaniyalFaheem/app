@@ -45,7 +45,7 @@ namespace FaceRecognitionAttendance.ViewModels
 
         #region Properties
 
-        private ObservableCollection<User> _users;
+        private ObservableCollection<User> _users = new ObservableCollection<User>();
         public ObservableCollection<User> Users
         {
             get => _users;

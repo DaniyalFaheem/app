@@ -152,6 +152,7 @@ namespace FaceRecognitionAttendance.ViewModels
             // Note: User model doesn't implement INotifyPropertyChanged, 
             // so dynamic property change subscriptions are not available.
             // UpdateVisibility() is called explicitly when needed during Save operation.
+            // TODO: Consider implementing INotifyPropertyChanged on User model if dynamic UI updates are needed.
         }
 
         private void UpdateVisibility()

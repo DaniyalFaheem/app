@@ -412,6 +412,30 @@ cd build
 
 **Important:** See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for comprehensive build and deployment instructions.
 
+### Common Build Issues
+
+#### PowerShell Script Execution Error
+If you get `cannot be loaded because running scripts is disabled`:
+```powershell
+# Enable script execution (run as Administrator)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Or run the script with bypass
+powershell -ExecutionPolicy Bypass -File .\publish.ps1
+```
+
+#### Wrong Directory Error
+All `dotnet` commands must be run from the **root directory** of the repository:
+```powershell
+# ❌ WRONG - from build directory
+cd build
+dotnet run --project src/FaceRecognitionAttendance.csproj  # ERROR: Project file does not exist
+
+# ✅ CORRECT - from root directory
+cd /path/to/app
+dotnet run --project src/FaceRecognitionAttendance.csproj
+```
+
 ---
 
 ## 🤖 AI Models Setup

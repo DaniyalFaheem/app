@@ -12,14 +12,13 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishTrimmed>true</PublishTrimmed>
+    <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>true</PublishReadyToRun>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     
     <!-- .NET 8.0 optimization features -->
-    <TrimMode>partial</TrimMode>
-    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <!-- TrimMode and EnableTrimAnalyzer removed as PublishTrimmed is false for WPF compatibility -->
     <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>

@@ -431,8 +431,8 @@ All `dotnet` commands must be run from the **root directory** of the repository:
 cd build
 dotnet run --project src/FaceRecognitionAttendance.csproj  # ERROR: Project file does not exist
 
-# ✅ CORRECT - from root directory
-cd /path/to/app
+# ✅ CORRECT - from root directory (app folder)
+cd app
 dotnet run --project src/FaceRecognitionAttendance.csproj
 ```
 

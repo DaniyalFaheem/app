@@ -1,0 +1,226 @@
+<Window x:Class="FaceRecognitionAttendance.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:converters="clr-namespace:FaceRecognitionAttendance.Converters"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="Face Recognition Attendance - Login" 
+        Height="600" 
+        Width="950"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
+                <ResourceDictionary Source="/Resources/Styles/ModernStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
+        <!-- Optimized Background - Solid color for better performance -->
+        <Grid.Background>
+            <SolidColorBrush Color="#2563EB"/>
+        </Grid.Background>
+
+        <!-- Main Content Grid -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="440"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Panel - Branding -->
+            <Grid Grid.Column="0" Margin="60,0">
+                <StackPanel VerticalAlignment="Center">
+                    <!-- Logo/Icon - Optimized -->
+                    <Grid Width="120" Height="120" Margin="0,0,0,30">
+                        <Ellipse Fill="White" Opacity="0.15" Width="120" Height="120"/>
+                        <TextBlock Text="🎓" 
+                                  FontSize="80" 
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Title - Better contrast -->
+                    <TextBlock Text="Face Recognition" 
+                              FontSize="42" 
+                              FontWeight="Bold" 
+                              Foreground="White"
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,10"
+                              TextOptions.TextFormattingMode="Display"
+                              TextOptions.TextRenderingMode="ClearType"/>
+                    <TextBlock Text="Attendance Management System" 
+                              FontSize="22" 
+                              Foreground="White"
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,40"
+                              TextOptions.TextFormattingMode="Display"
+                              TextOptions.TextRenderingMode="ClearType"/>
+
+                    <!-- Features List - Optimized with better visibility -->
+                    <StackPanel Margin="0,20,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <TextBlock Text="✓" FontSize="20" Foreground="#10B981" FontWeight="Bold" Margin="0,0,15,0"/>
+                            <TextBlock Text="AI-Powered Face Recognition" 
+                                      FontSize="16" 
+                                      Foreground="White" 
+                                      TextOptions.TextFormattingMode="Display"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <TextBlock Text="✓" FontSize="20" Foreground="#10B981" FontWeight="Bold" Margin="0,0,15,0"/>
+                            <TextBlock Text="Real-Time Attendance Tracking" 
+                                      FontSize="16" 
+                                      Foreground="White" 
+                                      TextOptions.TextFormattingMode="Display"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <TextBlock Text="✓" FontSize="20" Foreground="#10B981" FontWeight="Bold" Margin="0,0,15,0"/>
+                            <TextBlock Text="Secure and Reliable" 
+                                      FontSize="16" 
+                                      Foreground="White" 
+                                      TextOptions.TextFormattingMode="Display"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="✓" FontSize="20" Foreground="#10B981" FontWeight="Bold" Margin="0,0,15,0"/>
+                            <TextBlock Text="Advanced Reporting and Analytics" 
+                                      FontSize="16" 
+                                      Foreground="White" 
+                                      TextOptions.TextFormattingMode="Display"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- Right Panel - Login Form -->
+            <Border Grid.Column="1" 
+                   Background="White"
+                   CornerRadius="20,0,0,20"
+                   Margin="0">
+                <Grid Margin="50,60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Form Header -->
+                    <StackPanel Grid.Row="0" Margin="0,0,0,40">
+                        <TextBlock Text="Welcome Back" 
+                                  FontSize="32" 
+                                  FontWeight="Bold" 
+                                  Foreground="#111827"
+                                  TextOptions.TextFormattingMode="Display"
+                                  TextOptions.TextRenderingMode="ClearType"/>
+                        <TextBlock Text="Sign in to continue to your account" 
+                                  FontSize="15" 
+                                  Foreground="#4B5563"
+                                  Margin="0,8,0,0"
+                                  TextOptions.TextFormattingMode="Display"/>
+                    </StackPanel>
+
+                    <!-- Login Form -->
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <!-- Username Field -->
+                        <TextBlock Text="Username" 
+                                  Style="{StaticResource FieldLabel}"/>
+                        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
+                                Style="{StaticResource ModernTextBox}"
+                                Height="45"
+                                Margin="0,0,0,20"/>
+
+                        <!-- Password Field -->
+                        <TextBlock Text="Password" 
+                                  Style="{StaticResource FieldLabel}"/>
+                        <PasswordBox x:Name="PasswordBox"
+                                    Style="{StaticResource ModernPasswordBox}"
+                                    Height="45"
+                                    Margin="0,0,0,10"
+                                    PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                        <!-- Error Message -->
+                        <Border Background="#FEE2E2" 
+                               CornerRadius="8"
+                               Padding="12"
+                               Margin="0,0,0,20"
+                               Visibility="{Binding ErrorMessage, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="⚠" 
+                                          Foreground="#DC2626" 
+                                          FontSize="16"
+                                          Margin="0,0,10,0"
+                                          VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding ErrorMessage}" 
+                                          Foreground="#DC2626"
+                                          FontSize="13"
+                                          TextWrapping="Wrap"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Login Button -->
+                        <Button Content="Sign In" 
+                               Command="{Binding LoginCommand}"
+                               Height="50"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                               Style="{StaticResource PrimaryButton}"
+                               Margin="0,10,0,0"/>
+
+                        <!-- Loading Indicator -->
+                        <StackPanel Orientation="Horizontal" 
+                                   HorizontalAlignment="Center"
+                                   Margin="0,20,0,0"
+                                   Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ui:ProgressRing IsActive="{Binding IsLoading}" 
+                                            Width="22" 
+                                            Height="22"
+                                            Margin="0,0,12,0"/>
+                            <TextBlock Text="Authenticating..." 
+                                      FontSize="14"
+                                      Foreground="#6B7280"
+                                      VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Footer -->
+                    <StackPanel Grid.Row="2" Margin="0,30,0,0">
+                        <Border Background="#F3F4F6" 
+                               CornerRadius="8" 
+                               Padding="15">
+                            <StackPanel>
+                                <TextBlock Text="Default Credentials" 
+                                          FontSize="12"
+                                          FontWeight="SemiBold"
+                                          Foreground="#6B7280"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock HorizontalAlignment="Center">
+                                    <Run Text="Username:" FontWeight="SemiBold" Foreground="#374151"/>
+                                    <Run Text="admin" FontFamily="Consolas" Foreground="#2563EB"/>
+                                    <LineBreak/>
+                                    <Run Text="Password:" FontWeight="SemiBold" Foreground="#374151"/>
+                                    <Run Text="admin123" FontFamily="Consolas" Foreground="#2563EB"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock Text="Version 2.0.0 • Powered by AI" 
+                                  FontSize="11"
+                                  Foreground="#9CA3AF"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+
+</Window>

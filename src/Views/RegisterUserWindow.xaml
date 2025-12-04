@@ -1,0 +1,325 @@
+<Window x:Class="FaceRecognitionAttendance.Views.RegisterUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:converters="clr-namespace:FaceRecognitionAttendance.Converters"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="Register New User - Face Recognition Attendance" 
+        Height="800" 
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
+                <ResourceDictionary Source="/Resources/Styles/ModernStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+            <converters:InverseBoolConverter x:Key="InverseBool"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.Background>
+            <SolidColorBrush Color="{StaticResource BackgroundColor}"/>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Style="{StaticResource ModernCard}" 
+                Margin="0,0,0,20"
+                Padding="25">
+            <StackPanel>
+                <TextBlock Text="Register New User" 
+                          FontSize="28" 
+                          FontWeight="Bold" 
+                          Foreground="{StaticResource TextPrimaryBrush}"/>
+                <TextBlock Text="Fill in user details and capture face images for registration" 
+                          FontSize="14" 
+                          Foreground="{StaticResource TextSecondaryBrush}"
+                          Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- User Details Form -->
+            <Border Grid.Column="0" 
+                    Style="{StaticResource ModernCard}"
+                    Margin="0,0,10,0"
+                    Padding="25">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock Text="User Information" 
+                                  FontSize="18" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,15"/>
+
+                        <!-- Name -->
+                        <TextBlock Text="Full Name *" 
+                                  FontSize="13" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource ModernTextBox}"
+                                ui:ControlHelper.PlaceholderText="Enter full name"
+                                Height="40"
+                                Margin="0,0,0,15"/>
+
+                        <!-- Phone -->
+                        <TextBlock Text="Phone Number *" 
+                                  FontSize="13" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding User.Phone, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource ModernTextBox}"
+                                ui:ControlHelper.PlaceholderText="Enter phone number"
+                                Height="40"
+                                Margin="0,0,0,15"/>
+
+                        <!-- Email -->
+                        <TextBlock Text="Email (Optional)" 
+                                  FontSize="13" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,5"/>
+                        <TextBox Text="{Binding User.Email, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource ModernTextBox}"
+                                ui:ControlHelper.PlaceholderText="Enter email address"
+                                Height="40"
+                                Margin="0,0,0,15"/>
+
+                        <!-- Department -->
+                        <TextBlock Text="Department *" 
+                                  FontSize="13" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,5"/>
+                        <ComboBox ItemsSource="{Binding Departments}"
+                                 SelectedItem="{Binding User.Department}"
+                                 Style="{StaticResource ModernComboBox}"
+                                 Height="40"
+                                 Margin="0,0,0,15"/>
+
+                        <!-- User Type -->
+                        <TextBlock Text="User Type *" 
+                                  FontSize="13" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{StaticResource TextPrimaryBrush}"
+                                  Margin="0,0,0,5"/>
+                        <ComboBox ItemsSource="{Binding UserTypes}"
+                                 SelectedItem="{Binding User.UserType}"
+                                 Style="{StaticResource ModernComboBox}"
+                                 Height="40"
+                                 Margin="0,0,0,15"/>
+
+                        <!-- Faculty Type (Visible only for Faculty) -->
+                        <StackPanel Visibility="{Binding IsFaculty, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="Faculty Type *" 
+                                      FontSize="13" 
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0,0,0,5"/>
+                            <ComboBox ItemsSource="{Binding FacultyTypes}"
+                                     SelectedItem="{Binding User.FacultyType}"
+                                     Style="{StaticResource ModernComboBox}"
+                                     Height="40"
+                                     Margin="0,0,0,15"/>
+                        </StackPanel>
+
+                        <!-- Monthly Salary (Visible for MonthlyRegular) -->
+                        <StackPanel Visibility="{Binding IsMonthlyRegular, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="Monthly Salary *" 
+                                      FontSize="13" 
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0,0,0,5"/>
+                            <TextBox Text="{Binding User.MonthlySalary, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ModernTextBox}"
+                                    ui:ControlHelper.PlaceholderText="Enter monthly salary"
+                                    Height="40"
+                                    Margin="0,0,0,15"/>
+                        </StackPanel>
+
+                        <!-- Fixed Salary (Visible for VisitingFixed) -->
+                        <StackPanel Visibility="{Binding IsVisitingFixed, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="Fixed Salary (30 days) *" 
+                                      FontSize="13" 
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0,0,0,5"/>
+                            <TextBox Text="{Binding User.FixedSalary, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ModernTextBox}"
+                                    ui:ControlHelper.PlaceholderText="Enter fixed salary"
+                                    Height="40"
+                                    Margin="0,0,0,15"/>
+                        </StackPanel>
+
+                        <!-- Per-Day Rate (Visible for VisitingPerDay) -->
+                        <StackPanel Visibility="{Binding IsVisitingPerDay, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="Per-Day Rate *" 
+                                      FontSize="13" 
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0,0,0,5"/>
+                            <TextBox Text="{Binding User.PerDayRate, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ModernTextBox}"
+                                    ui:ControlHelper.PlaceholderText="Enter per-day rate"
+                                    Height="40"
+                                    Margin="0,0,0,15"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Camera Feed and Capture Controls -->
+            <Border Grid.Column="1" 
+                    Style="{StaticResource ModernCard}"
+                    Margin="10,0,0,0"
+                    Padding="25">
+                <StackPanel>
+                    <TextBlock Text="Face Capture" 
+                              FontSize="18" 
+                              FontWeight="SemiBold"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,15"/>
+
+                    <!-- Camera Display -->
+                    <Border BorderBrush="#E5E7EB"
+                           BorderThickness="2"
+                           CornerRadius="8"
+                           Height="280"
+                           Margin="0,0,0,15">
+                        <Image Source="{Binding CameraFrame}"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                    </Border>
+
+                    <!-- Capture Progress -->
+                    <Border Background="#F3F4F6"
+                           Padding="15"
+                           CornerRadius="8"
+                           Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="{Binding StatusMessage}"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      TextWrapping="Wrap"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,0,0,10"/>
+                            
+                            <ProgressBar Value="{Binding CapturedCount}"
+                                        Maximum="80"
+                                        Height="8"
+                                        Foreground="{StaticResource SuccessBrush}"/>
+                            
+                            <TextBlock Text="{Binding CapturedCount, StringFormat='{}{0}/80 images captured'}"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryBrush}"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Capture Controls -->
+                    <StackPanel>
+                        <Button Content="📷 Start Capture"
+                               Command="{Binding StartCaptureCommand}"
+                               Style="{StaticResource PrimaryButton}"
+                               Height="45"
+                               Margin="0,0,0,10"/>
+                        
+                        <Button Content="⏹ Stop Capture"
+                               Command="{Binding StopCaptureCommand}"
+                               Style="{StaticResource OutlineButton}"
+                               Height="45"/>
+                    </StackPanel>
+
+                    <!-- Instructions -->
+                    <Border Background="#EFF6FF"
+                           Padding="12"
+                           CornerRadius="8"
+                           Margin="0,15,0,0">
+                        <StackPanel>
+                            <TextBlock Text="📋 Instructions:" 
+                                      FontSize="12" 
+                                      FontWeight="Bold"
+                                      Foreground="{StaticResource TextPrimaryBrush}"
+                                      Margin="0,0,0,5"/>
+                            <TextBlock FontSize="11" 
+                                      Foreground="{StaticResource TextSecondaryBrush}"
+                                      TextWrapping="Wrap">
+                                <Run Text="1. Fill in all required details"/>
+                                <LineBreak/>
+                                <Run Text="2. Click 'Start Capture'"/>
+                                <LineBreak/>
+                                <Run Text="3. Look at the camera"/>
+                                <LineBreak/>
+                                <Run Text="4. Move head slightly for variations"/>
+                                <LineBreak/>
+                                <Run Text="5. Wait for 80 images to be captured"/>
+                                <LineBreak/>
+                                <Run Text="6. Click 'Save' when done"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Action Buttons -->
+        <Border Grid.Row="2" 
+                Style="{StaticResource ModernCard}"
+                Padding="25"
+                Margin="0,20,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                          Text="* Required fields"
+                          FontSize="12"
+                          Foreground="{StaticResource TextSecondaryBrush}"
+                          VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="✓ Save User"
+                           Command="{Binding SaveCommand}"
+                           Style="{StaticResource SuccessButton}"
+                           Height="45"
+                           Padding="25,0"
+                           Margin="0,0,12,0"
+                           IsEnabled="{Binding IsSaving, Converter={StaticResource InverseBool}}"/>
+                    
+                    <Button Content="✕ Cancel"
+                           Command="{Binding CancelCommand}"
+                           Style="{StaticResource OutlineButton}"
+                           Height="45"
+                           Padding="25,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

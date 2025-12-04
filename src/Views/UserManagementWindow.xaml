@@ -108,6 +108,7 @@
 
                     <ComboBox Grid.Column="2" 
                              SelectedItem="{Binding FilterUserType}"
+                             Style="{StaticResource ModernComboBox}"
                              Height="45"
                              Padding="12,0"
                              FontSize="14">

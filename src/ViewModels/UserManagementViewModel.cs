@@ -192,9 +192,9 @@ namespace FaceRecognitionAttendance.ViewModels
             try
             {
                 // Get required services from DI container
-                var cameraService = App.ServiceProvider?.GetService(typeof(Services.Camera.ICameraService)) as Services.Camera.ICameraService;
-                var faceDetectionService = App.ServiceProvider?.GetService(typeof(Services.FaceRecognition.IFaceDetectionService)) as Services.FaceRecognition.IFaceDetectionService;
-                var faceRecognitionService = App.ServiceProvider?.GetService(typeof(Services.FaceRecognition.IFaceRecognitionService)) as Services.FaceRecognition.IFaceRecognitionService;
+                var cameraService = App.ServiceProvider?.GetService<Services.Camera.ICameraService>();
+                var faceDetectionService = App.ServiceProvider?.GetService<Services.FaceRecognition.IFaceDetectionService>();
+                var faceRecognitionService = App.ServiceProvider?.GetService<Services.FaceRecognition.IFaceRecognitionService>();
 
                 if (cameraService == null || faceDetectionService == null || faceRecognitionService == null)
                 {

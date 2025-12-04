@@ -30,6 +30,8 @@ namespace FaceRecognitionAttendance.ViewModels
         private System.Windows.Threading.DispatcherTimer? _frameTimer;
         private List<Mat> _capturedFaces = new List<Mat>();
         private const int REQUIRED_IMAGES = 80;
+        private int _frameCounter = 0;
+        private const int CAPTURE_EVERY_N_FRAMES = 3; // Capture every 3rd frame
 
         public RegisterUserViewModel(
             IUserRepository userRepository,
@@ -263,6 +265,7 @@ namespace FaceRecognitionAttendance.ViewModels
                 IsCapturing = true;
                 CapturedCount = 0;
                 _capturedFaces.Clear();
+                _frameCounter = 0;
                 StatusMessage = $"Capturing images... {CapturedCount}/{REQUIRED_IMAGES}. Look at the camera and move your head slightly.";
 
                 // Start frame timer
@@ -300,8 +303,9 @@ namespace FaceRecognitionAttendance.ViewModels
                     // Draw rectangle on display frame
                     Cv2.Rectangle(displayFrame, face.BoundingBox, Scalar.Green, 3);
                     
-                    // Capture face image periodically
-                    if (_capturedFaces.Count < REQUIRED_IMAGES && _capturedFaces.Count % 1 == 0)
+                    // Capture face image periodically (every Nth frame to get variations)
+                    _frameCounter++;
+                    if (_capturedFaces.Count < REQUIRED_IMAGES && _frameCounter % CAPTURE_EVERY_N_FRAMES == 0)
                     {
                         // Extract face region
                         var faceImage = new Mat(frame, face.BoundingBox);

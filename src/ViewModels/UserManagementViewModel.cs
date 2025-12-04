@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Extensions.DependencyInjection;
 using FaceRecognitionAttendance.Models;
 using FaceRecognitionAttendance.Data.Repositories;
 using FaceRecognitionAttendance.Services.Authentication;
@@ -33,6 +34,7 @@ namespace FaceRecognitionAttendance.ViewModels
             Users = new ObservableCollection<User>();
             
             // Initialize commands
+            RegisterUserCommand = new RelayCommand(RegisterUser);
             EditUserCommand = new RelayCommand(EditUser, CanEditUser);
             DeleteUserCommand = new RelayCommand(DeleteUser, CanDeleteUser);
             ViewDetailsCommand = new RelayCommand(ViewDetails, CanViewDetails);
@@ -105,6 +107,7 @@ namespace FaceRecognitionAttendance.ViewModels
 
         #region Commands
 
+        public ICommand RegisterUserCommand { get; }
         public ICommand EditUserCommand { get; }
         public ICommand DeleteUserCommand { get; }
         public ICommand ViewDetailsCommand { get; }
@@ -181,6 +184,44 @@ namespace FaceRecognitionAttendance.ViewModels
             finally
             {
                 IsLoading = false;
+            }
+        }
+
+        private void RegisterUser()
+        {
+            try
+            {
+                // Get required services from DI container
+                var cameraService = App.ServiceProvider?.GetService(typeof(Services.Camera.ICameraService)) as Services.Camera.ICameraService;
+                var faceDetectionService = App.ServiceProvider?.GetService(typeof(Services.FaceRecognition.IFaceDetectionService)) as Services.FaceRecognition.IFaceDetectionService;
+                var faceRecognitionService = App.ServiceProvider?.GetService(typeof(Services.FaceRecognition.IFaceRecognitionService)) as Services.FaceRecognition.IFaceRecognitionService;
+
+                if (cameraService == null || faceDetectionService == null || faceRecognitionService == null)
+                {
+                    MessageBox.Show("Failed to initialize required services.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Create RegisterUserViewModel
+                var registerViewModel = new RegisterUserViewModel(
+                    _userRepository,
+                    cameraService,
+                    faceDetectionService,
+                    faceRecognitionService);
+
+                // Open RegisterUserWindow
+                var registerWindow = new RegisterUserWindow(registerViewModel);
+                var result = registerWindow.ShowDialog();
+
+                // Refresh list if user was registered
+                if (result == true)
+                {
+                    _ = LoadUsersAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening registration window: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

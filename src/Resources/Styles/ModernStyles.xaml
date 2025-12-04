@@ -186,6 +186,7 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="#000000"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
@@ -217,6 +218,7 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="#000000"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
@@ -255,6 +257,21 @@
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
         <Setter Property="Margin" Value="0,12,0,6"/>
+    </Style>
+
+    <!-- Modern ComboBox Style -->
+    <Style x:Key="ModernComboBox" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#E5E7EB"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <!-- Modern DataGrid Style -->
+    <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#E5E7EB"/>
     </Style>
 
     <!-- Icon Button Style -->

@@ -84,6 +84,7 @@
                     <TextBlock Text="Department *" Style="{StaticResource FieldLabel}"/>
                     <ComboBox ItemsSource="{Binding Departments}" 
                              SelectedItem="{Binding User.Department}" 
+                             Style="{StaticResource ModernComboBox}"
                              Height="45"
                              Padding="12,0"
                              FontSize="14"
@@ -93,6 +94,7 @@
                     <TextBlock Text="User Type *" Style="{StaticResource FieldLabel}"/>
                     <ComboBox ItemsSource="{Binding UserTypes}" 
                              SelectedItem="{Binding User.UserType}" 
+                             Style="{StaticResource ModernComboBox}"
                              Height="45"
                              Padding="12,0"
                              FontSize="14"/>
@@ -108,6 +110,7 @@
                         <TextBlock Text="Faculty Type *" Style="{StaticResource FieldLabel}"/>
                         <ComboBox ItemsSource="{Binding FacultyTypes}" 
                                  SelectedItem="{Binding User.FacultyType}" 
+                                 Style="{StaticResource ModernComboBox}"
                                  Height="45"
                                  Padding="12,0"
                                  FontSize="14"/>

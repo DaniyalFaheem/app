@@ -108,6 +108,7 @@
 
                     <ComboBox Grid.Column="2" 
                              SelectedItem="{Binding FilterUserType}"
+                             Style="{StaticResource ModernComboBox}"
                              Height="45"
                              Padding="12,0"
                              FontSize="14">
@@ -126,6 +127,7 @@
                Margin="0,0,0,20">
             <DataGrid ItemsSource="{Binding Users}" 
                      SelectedItem="{Binding SelectedUser}"
+                     Style="{StaticResource ModernDataGrid}"
                      AutoGenerateColumns="False" 
                      IsReadOnly="True"
                      CanUserSortColumns="True" 

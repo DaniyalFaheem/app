@@ -186,7 +186,8 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
         <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextPrimaryBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
@@ -196,6 +197,7 @@
                            CornerRadius="8"
                            Padding="{TemplateBinding Padding}">
                         <ScrollViewer x:Name="PART_ContentHost" 
+                                    Foreground="{TemplateBinding Foreground}"
                                     VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -218,7 +220,8 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
         <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextPrimaryBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
@@ -228,6 +231,7 @@
                            CornerRadius="8"
                            Padding="{TemplateBinding Padding}">
                         <ScrollViewer x:Name="PART_ContentHost" 
+                                    Foreground="{TemplateBinding Foreground}"
                                     VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -261,7 +265,7 @@
 
     <!-- Modern ComboBox Style -->
     <Style x:Key="ModernComboBox" TargetType="ComboBox">
-        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
         <Setter Property="BorderThickness" Value="2"/>
@@ -269,7 +273,7 @@
 
     <!-- Modern DataGrid Style -->
     <Style x:Key="ModernDataGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#E5E7EB"/>
     </Style>

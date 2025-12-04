@@ -350,7 +350,7 @@ namespace FaceRecognitionAttendance.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in frame processing: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error in frame processing: {ex.Message}");
             }
         }
 
@@ -378,7 +378,7 @@ namespace FaceRecognitionAttendance.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error stopping capture: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error stopping capture: {ex.Message}");
             }
         }
 
@@ -408,8 +408,9 @@ namespace FaceRecognitionAttendance.ViewModels
             try
             {
                 // Generate face encoding from captured images
-                // Using the first good quality image for encoding
-                var bestImage = _capturedFaces[_capturedFaces.Count / 2]; // Middle image
+                // Using the middle image which typically has the best quality (user has adjusted position by this point)
+                var middleIndex = _capturedFaces.Count / 2;
+                var bestImage = _capturedFaces[middleIndex];
                 var encoding = _faceRecognitionService.GenerateEncoding(bestImage);
 
                 if (encoding == null || encoding.Length == 0)
